@@ -1,10 +1,13 @@
-/* Reset margins and paddings */
+/* note: we want to keep this simple so please avoid using the important tag unless there is no other options kthxbai */
+
+/* Reset margins and paddings for main content */
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
 }
 
+/* header styles - contains logo */
 .header {
     height: 75px;
     background-color: #bebebe;
@@ -19,10 +22,12 @@ body {
   min-height: 100vh;
 }
 
+/*footer style - contains nav*/
 .footer {
   margin-top: auto;  /* push footer to bottom */
 }
 
+/* nav styling */
 .footer nav {
   display: flex;
   justify-content: flex-start; /* left-align links */
@@ -31,18 +36,21 @@ body {
   height: 75px;
   background: grey; /* darker gray for contrast */
 }
+
+/* nav link style */
 .footer nav a {
   margin-right: 20px; /* spacing between links */
   color: white;
   text-decoration: none;
 }
 
-
+/* adjust size of logo at top */
 .site-logo {
     height: 80px;
     margin: 0; /* no extra spacing */
 }
 
+/* container for item detail images */
 .item-container {
     display: flex;
     flex-wrap: nowrap; /* keep two columns */
@@ -51,6 +59,7 @@ body {
     align-items: flex-start; /* align top edges */
 }
 
+/* grid container for item images main page */
 .grid-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -60,6 +69,7 @@ body {
   max-width: 1500x;       /* limit overall width */
 }
 
+/* item container for images main page */
 .grid-item {
   background-color: #ddd;
   border: 1px solid #999;
@@ -69,6 +79,7 @@ body {
   margin: 0;
 }
 
+/* styling for images on main page - do not change - this controls size of image and will ruin page if adjusted incorrectly */
 .grid-item img {
   width: 100%;
   height: 100%;
@@ -105,12 +116,54 @@ body {
     padding: 10px;
 }
 
-/* Responsive: stack on mobile */
-@media (max-width: 768px) {
-    .item-container {
-        flex-direction: column;
-    }
-    .detail-img, .item-detail {
-        flex: 1 1 100%;
-    }
+/* mobile responsiveness overrides */
+@media (max-width: 600px) {
+
+  /* Header — prevent stretching/cropping */
+  .header {
+    height: auto;
+    padding: 10px;
+    justify-content: center; /* center logo */
+  }
+
+  .site-logo {
+    height: 60px; /* smaller for mobile */
+    width: auto;
+  }
+
+  /* Grid pages — go to 1 column on phones */
+  .grid-container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 10px;
+  }
+
+  /* Item pages — stack vertically */
+  .item-container {
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+  }
+
+  .detail-img {
+    grid-template-columns: 1fr; /* 1 thumbnail per row */
+    min-height: auto; /* allow natural height */
+  }
+
+  .item-detail {
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  /* Footer/nav always visible and not cramped */
+  .footer nav {
+    height: auto;
+    padding: 10px;
+    flex-wrap: wrap; /* text wraps before shrinking */
+  }
+
+  .footer nav a {
+    margin-right: 10px;
+    font-size: 0.9rem;
+  }
 }
