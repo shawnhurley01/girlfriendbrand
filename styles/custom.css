@@ -1,113 +1,111 @@
-/* note: we want to keep this simple so please avoid using the important tag unless there is no other options kthxbai */
-
-/* Reset margins and paddings for main content */
+/* -----------------------------------------------------------
+   Global Reset + Base Layout
+----------------------------------------------------------- */
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-/* header styles - contains logo */
+/* -----------------------------------------------------------
+   Header + Logo
+----------------------------------------------------------- */
 .header {
     height: 75px;
     background-color: #bebebe;
     display: flex;
-    align-items: left; /* vertically center logo */
-    padding: 0 20px; /* optional side spacing */
+    align-items: center;
+    padding: 0 20px;
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-/*footer style - contains nav*/
-.footer {
-  margin-top: auto;  /* push footer to bottom */
-}
-
-/* nav styling */
-.footer nav {
-  display: flex;
-  justify-content: flex-start; /* left-align links */
-  align-items: center;
-  padding: 0 20px;
-  height: 75px;
-  background: grey; /* darker gray for contrast */
-}
-
-/* nav link style */
-.footer nav a {
-  margin-right: 20px; /* spacing between links */
-  color: white;
-  text-decoration: none;
-}
-
-/* adjust size of logo at top */
 .site-logo {
     height: 80px;
-    margin: 0; /* no extra spacing */
+    width: auto;
+    margin: 0;
 }
 
-/* container for item detail images */
-.item-container {
+/* -----------------------------------------------------------
+   Footer + Navigation
+----------------------------------------------------------- */
+.footer {
+    margin-top: auto; /* ensure footer stays bottom */
+}
+
+.footer nav {
     display: flex;
-    flex-wrap: nowrap; /* keep two columns */
+    justify-content: flex-start;
+    align-items: center;
+    height: 75px;
+    padding: 0 20px;
+    background: grey;
+}
+
+.footer nav a {
+    margin-right: 20px;
+    color: white;
+    text-decoration: none;
+}
+
+/* -----------------------------------------------------------
+   Gallery Grid (Main Page)
+----------------------------------------------------------- */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     padding: 20px;
-    align-items: flex-start; /* align top edges */
+    margin: 0 auto;
+    max-width: 1500px;
 }
 
-/* grid container for item images main page */
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  padding: 20px;
-  margin: 0 auto;        /* center grid */
-  max-width: 1500x;       /* limit overall width */
-}
-
-/* item container for images main page */
 .grid-item {
-  background-color: #ddd;
-  border: 1px solid #999;
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-  padding: 0;
-  margin: 0;
+    background-color: #ddd;
+    border: 1px solid #999;
+    aspect-ratio: 1/1;
+    overflow: hidden;
 }
 
-/* styling for images on main page - do not change - this controls size of image and will ruin page if adjusted incorrectly */
 .grid-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* fills the square, crops if needed */
-  display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
+/* -----------------------------------------------------------
+   Item Detail Page Layout
+----------------------------------------------------------- */
+.item-container {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    padding: 20px;
+    align-items: flex-start;
+}
 
-/* Left: Grid of images/items */
+/* Left gallery thumbnails */
 .detail-img {
     flex: 1 1 45%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
-    min-height: 300px; /* ensures grid shows */
+    min-height: 300px;
 }
 
 .detail-img .grid-item {
-    background-color: #ddd;
-    aspect-ratio: 1/1;
     display: flex;
-    align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
+    align-items: center;
+    background-color: #ddd;
     border: 1px solid #999;
+    aspect-ratio: 1/1;
+    font-size: 1.2rem;
 }
 
-/* Right: Item description/content */
+/* Right description block */
 .item-detail {
     flex: 1 1 45%;
     display: flex;
@@ -116,54 +114,55 @@ body {
     padding: 10px;
 }
 
-/* mobile responsiveness overrides */
+/* -----------------------------------------------------------
+   Mobile Responsiveness
+----------------------------------------------------------- */
 @media (max-width: 600px) {
 
-  /* Header — prevent stretching/cropping */
-  .header {
-    height: auto;
-    padding: 10px;
-    justify-content: center; /* center logo */
-  }
+    .header {
+        height: auto;
+        padding: 10px;
+        justify-content: flex-start; /* ✅ keep logo left */
+    }
 
-  .site-logo {
-    height: 60px; /* smaller for mobile */
-    width: auto;
-  }
+    .site-logo {
+        height: 60px;
+        width: auto;
+    }
 
-  /* Grid pages — go to 1 column on phones */
-  .grid-container {
-    grid-template-columns: 1fr;
-    gap: 15px;
-    padding: 10px;
-  }
+    /* Grid pages — go to 1 column on phones */
+    .grid-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 10px;
+    }
 
-  /* Item pages — stack vertically */
-  .item-container {
-    flex-direction: column;
-    gap: 15px;
-    padding: 10px;
-  }
+    /* Item pages — stack vertically */
+    .item-container {
+        flex-direction: column;
+        gap: 15px;
+        padding: 10px;
+    }
 
-  .detail-img {
-    grid-template-columns: 1fr; /* 1 thumbnail per row */
-    min-height: auto; /* allow natural height */
-  }
+    .detail-img {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
 
-  .item-detail {
-    width: 100%;
-    padding: 10px 0;
-  }
+    .item-detail {
+        width: 100%;
+        padding: 10px 0;
+    }
 
-  /* Footer/nav always visible and not cramped */
-  .footer nav {
-    height: auto;
-    padding: 10px;
-    flex-wrap: wrap; /* text wraps before shrinking */
-  }
+    /* Footer/nav always visible and not cramped */
+    .footer nav {
+        height: auto;
+        padding: 10px;
+        flex-wrap: wrap;
+    }
 
-  .footer nav a {
-    margin-right: 10px;
-    font-size: 0.9rem;
-  }
+    .footer nav a {
+        margin-right: 10px;
+        font-size: 0.9rem;
+    }
 }
