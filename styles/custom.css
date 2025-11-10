@@ -60,7 +60,7 @@ body {
 .grid-container .grid-item img {
   width: 100% !important;    /* force it to match parent width */
   height: 100% !important;   /* keep image filling the square */
-  object-fit: contain !important; /* keep it from cropping */
+  object-fit: cover !important; /* keep it from cropping */
   display: block;
   max-width: 100%;
 }
