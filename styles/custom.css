@@ -42,24 +42,24 @@ body {
 }
 
 .grid-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns */
-    gap: 50px;
-    padding: 20px;
-    margin: 50px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+  padding: 20px;
+  margin: 50px;
 }
 
-.grid-container .grid-item {
-    background-color: #ddd;
-    aspect-ratio: 1/1;
-    border: 1px solid #999;
-    font-size: 1.2rem;
-    overflow: hidden; /* prevents image overflow */
+.grid-item {
+  background-color: #ddd;
+  border: 1px solid #999;
+  aspect-ratio: 1 / 1;
+  overflow: hidden; /* ensures image doesn’t overflow */
 }
+
 .grid-item img {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* or 'cover' if you want it cropped */
+  object-fit: contain; /* keeps entire image visible */
   display: block;
 }
 
