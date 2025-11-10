@@ -122,8 +122,13 @@ body {
     .header {
         height: auto;
         padding: 10px;
-        justify-content: flex-start; /* ✅ keep logo left */
+        justify-content: flex-start;
     }
+
+    .site-logo img {
+        max-height: 50px;
+    }
+}
 
     .site-logo {
         height: 60px;
