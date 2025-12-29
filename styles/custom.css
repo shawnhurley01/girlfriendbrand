@@ -1,5 +1,5 @@
 /* -----------------------------------------------------------
-   Global Reset + Base Layout
+Global Reset + Base Layout
 ----------------------------------------------------------- */
 html, body {
     width: 100%;
@@ -13,11 +13,10 @@ html, body {
 }
 
 /* -----------------------------------------------------------
-   Header + Logo
+Header + Logo
 ----------------------------------------------------------- */
 .header {
     width: 100%;
-    height: auto;
     background-color: #bebebe;
     display: flex;
     align-items: center;
@@ -26,13 +25,13 @@ html, body {
 }
 
 .site-logo img {
-    max-width: 100%;       /* scales on desktop */
+    max-width: 100%;
     height: auto;
     display: block;
 }
 
 /* -----------------------------------------------------------
-   Footer + Navigation
+Footer + Navigation
 ----------------------------------------------------------- */
 .footer {
     margin-top: auto; /* keep footer at bottom */
@@ -40,12 +39,11 @@ html, body {
 
 .footer nav {
     width: 100%;
-    height: auto;       /* full width on mobile */
     background-color: grey;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    flex-wrap: wrap;        /* wrap links on small screens */
+    flex-wrap: wrap;
     padding: 0 10px;
     box-sizing: border-box;
 }
@@ -57,7 +55,7 @@ html, body {
 }
 
 /* -----------------------------------------------------------
-   Gallery Grid (Main Page)
+Gallery Grid (Main Pages)
 ----------------------------------------------------------- */
 .grid-container {
     display: grid;
@@ -83,94 +81,177 @@ html, body {
 }
 
 /* -----------------------------------------------------------
-   Item Detail Page Layout
+Gallery captions
 ----------------------------------------------------------- */
-.item-container {
+div.gallery {
     display: flex;
-    flex-wrap: nowrap;
-    gap: 20px;
-    padding: 20px;
-    align-items: flex-start;
-}
-
-/* Left gallery thumbnails */
-.detail-img {
-    flex: 1 1 45%;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    min-height: 300px;
-}
-
-.detail-img .grid-item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #ddd;
-    border: 1px solid #999;
-    aspect-ratio: 1/1;
-    font-size: 1.2rem;
-}
-
-/* Right description block */
-.item-detail {
-    flex: 1 1 45%;
-    display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     justify-content: flex-start;
-    padding: 10px;
+}
+
+div.gallery-item {
+    margin: 5px;
+    border: 1px solid #ccc;
+    width: 180px;
+}
+
+div.gallery-item:hover {
+    border: 1px solid #777;
+}
+
+div.gallery-item img {
+    width: 100%;
+    height: auto;
+}
+
+div.gallery-item div.desc {
+    padding: 15px;
+    text-align: center;
 }
 
 /* -----------------------------------------------------------
-   Mobile Responsiveness
+Item Detail Pages - FIXED 50/50 LAYOUT
 ----------------------------------------------------------- */
-@media (max-width: 600px) {
+.item-detail-container {
+    max-width: 1200px;  /* Wider for two-column */
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
 
-    /* Header */
+.item-name {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 0 20px;
+    font-size: 2rem;
+    text-align: center;
+}
+
+/* Main image - full width top */
+.main-image {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.main-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border: 3px solid #999;
+    border-radius: 4px;
+    display: block;
+    transition: border-color 0.2s ease;
+}
+
+/* FIXED: Perfect 50/50 two-column layout */
+.product-layout {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    width: 100%;
+}
+
+/* LEFT: Flexible thumbnail container */
+.thumb-container {
+    flex: 1;              /* Equal split with text */
+    min-width: 0;         /* Allow shrinking */
+    max-width: 450px;     /* FIXED: proper syntax */
+}
+
+.thumbnails {
+    /* Container for thumbnail grid */
+}
+
+.thumbnail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 150px);
+    grid-auto-rows: 150px;
+    gap: 12px;
+    justify-content: start;
+    width: 100%;
+}
+
+.thumb {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 2px solid #999;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    display: block;
+}
+
+.thumb:hover {
+    transform: scale(1.05);
+    border-color: #333;
+}
+
+/* RIGHT: Product description */
+.product-description {
+    flex: 1;              /* Equal split with thumbs */
+    min-width: 0;         /* Allow text wrapping */
+    padding: 1rem 0;
+}
+
+.product-description h2 {
+    margin-top: 0;
+    color: #333;
+    padding: 25px 0 15px 0;
+}
+
+.product-description p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+/* -----------------------------------------------------------
+Responsive Adjustments
+----------------------------------------------------------- */
+@media (max-width: 768px) {
+    .item-detail-container {
+        padding: 10px;
+    }
+
+    .item-name {
+        font-size: 1.5rem;
+        padding: 0 10px;
+    }
+
+    /* Stack layout vertically on mobile */
+    .product-layout {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .thumbnail-grid {
+        grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+        gap: 8px;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Header adjustments */
     .header {
         height: auto;
         padding: 0 10px;
         justify-content: flex-start;
         align-items: center;
-        width: 100vw;        /* full viewport width */
+        width: 100vw;
         min-width: 100%;
     }
 
     .site-logo img {
-        max-height: 50px;     /* scale down on mobile */
+        max-height: 50px;
         width: auto;
         display: block;
     }
 
-    /* Grid pages — 1 column on phones */
-    .grid-container {
-        grid-template-columns: 1fr;
-        gap: 15px;
-        padding: 10px;
-    }
-
-    /* Item pages — stack vertically */
-    .item-container {
-        flex-direction: column;
-        gap: 15px;
-        padding: 10px;
-    }
-
-    .detail-img {
-        grid-template-columns: 1fr;
-        min-height: auto;
-    }
-
-    .item-detail {
-        width: 100%;
-        padding: 10px 0;
-    }
-
-    /* Footer/nav */
+    /* Footer/nav adjustments */
     .footer nav {
         height: auto;
         padding: 10px;
-        width: 100vw;         /* full viewport width */
+        width: 100vw;
         min-width: 100%;
         flex-wrap: wrap;
     }
@@ -178,5 +259,12 @@ html, body {
     .footer nav a {
         margin-right: 10px;
         font-size: 0.9rem;
+    }
+
+    /* Grid pages: single column */
+    .grid-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 10px;
     }
 }
