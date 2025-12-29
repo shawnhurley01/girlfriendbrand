@@ -1,35 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title }}</title>
-  <link rel="stylesheet" href="{{ 'styles/custom.css' | relative_url }}">
-  <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles/custom.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <title>Girlfriend Brand</title>
 </head>
-<body>
-  {% include header.html %}
-  <main>
-    <div class="item-container">
-      <!-- Left: Grid of images/items -->
-      <div class="detail-img">
-        <div class="grid-item">1</div>
-        <div class="grid-item">2</div>
-        <div class="grid-item">3</div>
-        <div class="grid-item">4</div>
-        <div class="grid-item">5</div>
-        <div class="grid-item">6</div>
-        <div class="grid-item">7</div>
-        <div class="grid-item">8</div>
-      </div>
 
-      <!-- Right: Item description/content -->
-      <div class="item-detail">
-        {{ content }}
-      </div>
+<body>
+    {% include header.html %}
+    
+    <main>
+        <!-- Item title -->
+        <h1 class="item-name">{{ page.title }}</h1>
+        
+        <!-- Main image (full width) -->
+        <div class="main-image">
+            <img id="main-image" src="{{ page.main_image }}" alt="{{ page.title }}">
+        </div>
+        
+        <!-- THUMBS LEFT + TEXT RIGHT -->
+        <div class="item-detail-container">
+            <div class="product-layout">
+                
+                <!-- LEFT: Thumbnail grid -->
+                <div class="thumb-container">
+                    <div class="thumbnails thumbnail-grid">
+                        {% for thumb in page.thumbnails %}
+                            <img class="thumb" src="{{ thumb }}" alt="View {{ forloop.index }}">
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                <!-- RIGHT: Description -->
+                <div class="product-description">
+                    {{ content }}
+                </div>
+                
+            </div>
+        </div>
+    </main>
+
+    <script src="index.js"></script>
+    <div class="footer">
+        {% include nav.html %}
     </div>
-  </main>
-<div class="footer"> {% include nav.html %}</div>
+
+    <!-- Thumbnail swap JS -->
+    <script>
+        const mainImage = document.getElementById('main-image');
+        const thumbs = document.querySelectorAll('.thumb');
+        thumbs.forEach(thumb => {
+            thumb.addEventListener('click', () => {
+                mainImage.src = thumb.src;
+            });
+        });
+    </script>
 </body>
-  
 </html>
