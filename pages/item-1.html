@@ -2,11 +2,33 @@
 layout: item-detail
 title: "Tweed Jacket"
 permalink: /item-1.html
-main_image: "assets/images/main.jpg"
-thumbnails:
-  - "assets/images/thumb1.jpg"
-  - "assets/images/thumb2.jpg"
-  - "assets/images/thumb3.jpg"
 ---
+<div class="main-image">
+  <img id="main-image" 
+       src="assets/images/item1-main.jpg" 
+       alt="{{ page.title }}">
+</div>   
 
-Your product description text goes here...
+<div class="product-layout">
+  
+  <!-- LEFT: Thumbnails -->
+  <div class="thumb-container">
+    <div class="thumbnails thumbnail-grid">
+      <img class="thumb" src="assets/images/thumb1.jpg" alt="View 1">
+      <img class="thumb" src="assets/images/thumb2.jpg" alt="View 2">
+      <img class="thumb" src="assets/images/thumb3.jpg" alt="View 3">
+      <!-- more thumbs as needed -->
+    </div>
+  </div>
+
+  <div class="product-description">
+    <h2>Product Details</h2>
+    <p>100% wool tweed jacket with classic fit. Made in Portland, Oregon.</p>
+    <ul>
+      <li>Material: 100% Wool</li>
+      <li>Sizes: S, M, L, XL</li>
+      <li>Care: Dry clean only</li>
+    </ul>
+  </div>
+
+</div>
