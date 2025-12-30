@@ -29,9 +29,11 @@
                 
                 <!-- LEFT: Thumbnail grid -->
                 <div class="thumb-container">
-                    <div class="thumbnails thumbnail-grid">
+                    <div class="thumbnails">
                         {% for thumb in page.thumbnails %}
+                            <div class="thumb">
                             <img class="thumb" src="{{ thumb }}" alt="View {{ forloop.index }}">
+                            </div>
                         {% endfor %}
                     </div>
                 </div>
