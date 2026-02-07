@@ -12,10 +12,10 @@ thumbnails:
 
 <div class="product-description">
   <h2>Product Details</h2>
-  <p>100% wool tweed jacket with classic fit. Made in Portland, Oregon.</p>
+  <p>I made this for a dude that i met at an ice cream shop. he had a cool jacket and the conversation turned to sewing. his partner was like "id buy him one from you" so i made it. they didnt buy it, so it goes.I picked up this from Bolt on alberta, it was some sort of 100% cotton brown chambrey. i did a honeycomb sashiko on the pocket. not super excited about how it came out, but if you squint it looks pretty cool. this was made from the wardrobe by me overshirt pattern. its my most used pattern, i am currently considering some major modifications to that pattern. Pattern making seems to be the biggest hurdle besides trying to own 5 single purpose machines in my tiny workshop. we continue on.</p>
   <ul>
-    <li>Material: 100% Wool</li>
-    <li>Sizes: S, M, L, XL</li>
-    <li>Care: Dry clean only</li>
+    <li>Material: 100% cotton</li>
+    <li>Sizes: L </li>
+    <li>Care: Cold Wash, Hang Dry, Warm Iron, NO Bleach, or do whatever you want</li>
   </ul>
 </div>
